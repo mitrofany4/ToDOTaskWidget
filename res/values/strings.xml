@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TaskWidget</string>
+    <string name="task_name">Enter task name:</string>
+    <string name="enter_start_time">Enter start time:</string>
+    <string name="enter_due_time">Enter due time:</string>
+    <string name="add_task">Add task</string>
+    <string name="cancel">Cancel</string>
+    <string name="tasks">Tasks:</string>
+</resources>
+
