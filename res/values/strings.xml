@@ -6,5 +6,13 @@
     <string name="add_task">Add task</string>
     <string name="cancel">Cancel</string>
     <string name="tasks">Tasks:</string>
+
+    <string-array name="categories">
+        <item>семья</item>
+        <item>работа</item>
+        <item>покупки</item>
+        <item>встреча</item>
+    </string-array>
+
 </resources>
 

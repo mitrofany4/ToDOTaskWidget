@@ -85,7 +85,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/cat_spinner"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:entries="@array/categories"/>
 
     <LinearLayout
         android:layout_width="match_parent"
