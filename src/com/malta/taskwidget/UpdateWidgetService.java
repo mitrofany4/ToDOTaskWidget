@@ -46,8 +46,8 @@ public class UpdateWidgetService extends Service {
 					R.layout.main);
 			Log.w("WidgetExample", String.valueOf(number));
 			// Set the text
-			remoteViews.setTextViewText(R.id.task_list_text,
-					"Random: " + String.valueOf(number));
+//			remoteViews.setTextViewText(R.id.task_list_text,
+//					"Random: " + String.valueOf(number));
 
 			// Register an onClickListener
 			Intent clickIntent = new Intent(this.getApplicationContext(),
@@ -58,7 +58,7 @@ public class UpdateWidgetService extends Service {
 					allWidgetIds);
 
 			PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0,	clickIntent, 0);
-			remoteViews.setOnClickPendingIntent(R.id.add_imagebutton, pendingIntent);
+			remoteViews.setOnClickPendingIntent(R.id.addIB, pendingIntent);
 			appWidgetManager.updateAppWidget(widgetId, remoteViews);
 		}
 		stopSelf();

@@ -42,7 +42,7 @@ public class TaskWidget extends AppWidgetProvider{
 			AppWidgetManager appWidgetManager, int appWidgetID) {
 		// TODO Auto-generated method stub
 		RemoteViews updateViews = new RemoteViews(context.getPackageName(),	R.layout.main);
-		updateViews.setTextViewText(R.id.task_list_text, "Hello!!!");
+//		updateViews.setTextViewText(R.id.task_list_text, "Hello!!!");
 		appWidgetManager.updateAppWidget(appWidgetID, updateViews);
 		Log.d(LOG_TAG, "updateAppWidget");
 	}

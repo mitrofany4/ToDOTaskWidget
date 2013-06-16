@@ -2,17 +2,17 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
     <stroke
         android:width="2dp"
-        android:color="#FFFFFFFF" />
+        android:color="#ff000000" />
 
     <gradient
-        android:angle="225"
-        android:endColor="#DD2ECCFA"
-        android:startColor="#DD000000" />
+        android:angle="0"
+        android:endColor="#dd606567"
+        android:startColor="#dd393939" />
 
     <corners
-        android:bottomLeftRadius="7dp"
-        android:bottomRightRadius="7dp"
-        android:topLeftRadius="7dp"
-        android:topRightRadius="7dp" />
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp" />
 
 </shape>

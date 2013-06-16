@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 
 public class Add_task extends Activity {
@@ -17,8 +19,10 @@ public class Add_task extends Activity {
     private EditText endnameEditText;
 	private Button addbutton;
 	private Button cancelbutton;
-	
-	private void updateAllWidgets(){
+    private DatePicker enddatepicker;
+    private TimePicker endtimepicker;
+
+    private void updateAllWidgets(){
 	    AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
 	    int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, TaskWidget.class));
 	    if (appWidgetIds.length > 0) {
@@ -38,9 +42,12 @@ public class Add_task extends Activity {
 	protected void addTask(){
 		DbAdapter dba = new DbAdapter(this);
 		dba=dba.OpentoWrite();
-		long n=dba.createTask(tasknameEditText.getText().toString(), 
-					   startnameEditText.getText().toString(), 
-					   endnameEditText.getText().toString());
+        String dateF = enddatepicker.getDayOfMonth() + "."+ (enddatepicker.getMonth()+1)+enddatepicker.getYear();
+        java.util.Formatter timeF = new java.util.Formatter();
+        timeF.format("%d:%02d", endtimepicker.getCurrentHour(), endtimepicker.getCurrentMinute());
+        long n=dba.createTask(tasknameEditText.getText().toString(),
+					   dateF,
+					   timeF.toString());
 		Log.i("Add task", "createTask "+Long.toString(n));
 		updateAllWidgets();
 		dba.Close();
@@ -52,10 +59,15 @@ public class Add_task extends Activity {
 	}
 	
 	protected void setUpViews(){
-		tasknameEditText = (EditText)findViewById(R.id.task_name);
+		/*tasknameEditText = (EditText)findViewById(R.id.task_name);
 		startnameEditText = (EditText)findViewById(R.id.start_name);
-		endnameEditText = (EditText)findViewById(R.id.end_name);
-		addbutton = (Button)findViewById(R.id.add_task);
+		endnameEditText = (EditText)findViewById(R.id.end_name);*/
+        tasknameEditText = (EditText)findViewById(R.id.tasknameET);
+        enddatepicker = (DatePicker) findViewById(R.id.datePicker);
+//        enddatepicker.init(2013,06,01,null);
+        endtimepicker = (TimePicker) findViewById(R.id.timePicker);
+        endtimepicker.setIs24HourView(true);
+        addbutton = (Button)findViewById(R.id.add_task);
 		cancelbutton = (Button)findViewById(R.id.Cancel);
 		
 		addbutton.setOnClickListener(new View.OnClickListener() {

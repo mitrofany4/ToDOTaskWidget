@@ -3,30 +3,250 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:baselineAligned="true"
     android:background="@drawable/myshape">
 
- 
-	    
-	    <ImageButton 
-	        android:id="@+id/add_imagebutton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:src="@drawable/ic_add" 
-	        android:layout_gravity="right"/>	    
-	    
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            >
+
+        <ImageButton
+                android:id="@+id/upIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/navigate_up"/>
+
+        <ImageButton
+                android:id="@+id/downIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/navigate_down"/>
+
+        <ImageButton
+                android:id="@+id/addIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:src="@drawable/add2"
+                android:layout_marginLeft="100dp"/>
+
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
 
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="#"
+                android:id="@+id/textView"
+                android:layout_gravity="center"/>
 
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="278dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Задача"
+                    android:id="@+id/taskTV1"
+                    android:textSize="20sp"
+                    android:typeface="serif"
+                    android:layout_weight="0.8"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold|italic"
+                    android:layout_gravity="center_vertical|left"
+                    android:paddingBottom="10dp"
+                    android:gravity="left"
+                    android:shadowColor="#d1d1d1"
+                    android:singleLine="false"/>
 
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
 
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Метка"
+                        android:id="@+id/catTV1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/taskTV1"
+                        android:gravity="left"/>
 
-	<TextView
-	    android:id="@+id/task_list_text"
-	    android:layout_width="fill_parent"
-	    android:layout_height="match_parent"
-	    android:layout_margin="10dp"
-	    android:textColor="#fff0"
-	    android:textSize="14pt" />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Дата окончания"
+                        android:id="@+id/DateTV1"
+                        android:layout_below="@+id/taskTV1"
+                        android:layout_toLeftOf="@+id/checkBox1"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="70dp"
+                        android:gravity="right"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_gravity="center"
+                android:src="@drawable/checked"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp"
+                  android:id="@+id/linearLayout">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="#"
+                android:id="@+id/textView2"
+                android:layout_gravity="center"/>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="278dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Задача"
+                    android:id="@+id/textView3"
+                    android:textSize="20sp"
+                    android:typeface="serif"
+                    android:layout_weight="0.8"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold|italic"
+                    android:layout_gravity="center_vertical|left"
+                    android:paddingBottom="10dp"
+                    android:gravity="left"
+                    android:shadowColor="#d1d1d1"
+                    android:singleLine="false"/>
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Метка"
+                        android:id="@+id/textView4"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textView3"
+                        android:gravity="left"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Дата окончания"
+                        android:id="@+id/textView5"
+                        android:layout_below="@+id/textView3"
+                        android:layout_toLeftOf="@+id/checkBox1"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="70dp"
+                        android:gravity="right"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_gravity="center"
+                android:src="@drawable/checked"/>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp"
+                  android:id="@+id/linearLayout2">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="#"
+                android:id="@+id/textView6"
+                android:layout_gravity="center"/>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="278dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Задача"
+                    android:id="@+id/textView7"
+                    android:textSize="20sp"
+                    android:typeface="serif"
+                    android:layout_weight="0.8"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold|italic"
+                    android:layout_gravity="center_vertical|left"
+                    android:paddingBottom="10dp"
+                    android:gravity="left"
+                    android:shadowColor="#d1d1d1"
+                    android:singleLine="false"/>
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Метка"
+                        android:id="@+id/textView8"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textView7"
+                        android:gravity="left"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Дата окончания"
+                        android:id="@+id/textView9"
+                        android:layout_below="@+id/textView7"
+                        android:layout_toLeftOf="@+id/checkBox1"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="70dp"
+                        android:gravity="right"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView3"
+                android:layout_gravity="center"
+                android:src="@drawable/checked"/>
+    </LinearLayout>
 
 </LinearLayout>

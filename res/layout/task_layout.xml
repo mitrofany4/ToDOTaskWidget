@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:baselineAligned="true"
+              android:background="@drawable/myshape">
+
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            >
+
+        <ImageButton
+                android:id="@+id/upIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/navigate_up"/>
+
+        <ImageButton
+                android:id="@+id/downIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/navigate_down"/>
+
+        <ImageButton
+                android:id="@+id/addIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:src="@drawable/add2"
+                android:layout_marginLeft="100dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox1"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:enabled="true"
+                android:checked="false"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Задача"
+                android:id="@+id/taskTV1"
+                android:textSize="20sp"
+                android:typeface="serif"
+                android:padding="5dp"
+                android:layout_weight="0.8"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Метка"
+                android:id="@+id/catTV1"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/taskTV1"
+                android:layout_marginLeft="25dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Дата окончания"
+                android:id="@+id/DateTV1"
+                android:layout_alignParentRight="false"
+                android:layout_below="@+id/taskTV1"
+                android:layout_toLeftOf="@+id/checkBox1"/>
+
+    </RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox2"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:enabled="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Задача"
+                android:id="@+id/taskTV2"
+                android:textSize="20sp"
+                android:typeface="serif"
+                android:padding="5dp"
+                android:layout_weight="0.8"
+                android:layout_marginLeft="10dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Метка"
+                android:id="@+id/catTV2"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/taskTV2"
+                android:layout_marginLeft="25dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Дата окончания"
+                android:id="@+id/DateTV2"
+                android:layout_alignParentRight="false"
+                android:layout_below="@+id/taskTV2"
+                android:layout_toLeftOf="@+id/checkBox2"/>
+
+    </RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox3"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:enabled="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Задача"
+                android:id="@+id/taskTV3"
+                android:textSize="20sp"
+                android:typeface="serif"
+                android:padding="5dp"
+                android:layout_weight="0.8"
+                android:layout_marginLeft="10dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Метка"
+                android:id="@+id/catTV3"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/taskTV3"
+                android:layout_marginLeft="25dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Дата окончания"
+                android:id="@+id/DateTV"
+                android:layout_alignParentRight="false"
+                android:layout_below="@+id/taskTV3"
+                android:layout_toLeftOf="@+id/checkBox3"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
