@@ -5,15 +5,19 @@ package com.malta.taskwidget;
 import android.content.ContentValues;
 import android.content.Context;
 
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import java.util.ArrayList;
 
 public class DbAdapter {
 	private static final String LOG = "DbAdapter";
 	private Context context;
 	private SQLiteDatabase db;
 	private DbOpenHelper dbHelper;
+//    public ArrayList <Task> tasks = new ArrayList<Task>();
 	
 	public DbAdapter(Context context){
 		this.context=context;
@@ -37,51 +41,46 @@ public class DbAdapter {
 		dbHelper.close();
 	}
 	
-	public long createTask(String task_name, String start_date, String end_date){
+	public long createTask(String task_name, String end_date, String category){
 		
-		ContentValues initialValues = createContentValues(task_name, start_date, end_date);
+		ContentValues initialValues = createContentValues(task_name, end_date, category);
 		Log.d(LOG, "Task created");
 		return db.insert(DbOpenHelper.TABLE_NAME, null, initialValues);
 		
 	}
 
 	private ContentValues createContentValues(String task_name,
-			String start_date, String end_date) {
+			String end_date, String category) {
 		// TODO Auto-generated method stub
 		ContentValues values = new ContentValues();
 		values.put(DbOpenHelper.TASK_NAME, task_name);
-		values.put(DbOpenHelper.START_DATE, start_date);
+		values.put(DbOpenHelper.CATEGORY, category);
 		values.put(DbOpenHelper.END_DATE, end_date);
 		return values;
 	}
 	
-/*	public String getAllTasks(){
-		StringBuilder tasks = new StringBuilder();
-		
+	public ArrayList<Task> getAllTasks(){
+
+        ArrayList <Task> tasks = new ArrayList<Task>();
 		Cursor cursor = db.query(DbOpenHelper.TABLE_NAME, new String[]
-				{DbOpenHelper.TASK_NAME, DbOpenHelper.START_DATE,DbOpenHelper.END_DATE}, 
-				null, null, null, null, null); 
-	   
-		cursor.moveToFirst();
-	    while (!cursor.isAfterLast()) {
-	      Task task = CursorToTask(cursor);
-	      tasks.append(task.toString());
-	      tasks.append(" \n");
-	      
-	      cursor.moveToNext();
-	    }
-	    cursor.close();
-		return tasks.toString();
-		
-	}
-	
-	  private Task CursorToTask(Cursor cursor) {
-		    Task task = new Task();
-		    task.setID(cursor.getLong(0));
-		    task.setname(cursor.getString(1));
-		    task.setStart(cursor.getString(2));
-		    task.setEnd(cursor.getString(3));
-		    return task;
-		  }
-*/		  
+				{DbOpenHelper.TASK_NAME, DbOpenHelper.END_DATE,DbOpenHelper.CATEGORY},
+				null, null, null, null, null);
+
+        tasks.clear();
+        if (cursor.moveToFirst()){
+            do {
+               long id = cursor.getLong(cursor.getColumnIndex(DbOpenHelper.KEY_ID));
+               String name = cursor.getString(cursor.getColumnIndex(DbOpenHelper.TASK_NAME));
+               String category = cursor.getString(cursor.getColumnIndex(DbOpenHelper.CATEGORY));
+               String enddate = cursor.getString(cursor.getColumnIndex(DbOpenHelper.END_DATE));
+
+               Task newtask = Task.createTask(id,name, category, enddate);
+               tasks.add(newtask);
+            } while (cursor.moveToNext());
+        }
+
+		cursor.close();
+        return  tasks;
+    }
+
 }

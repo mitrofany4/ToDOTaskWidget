@@ -8,16 +8,23 @@ import android.util.Log;
 public class DbOpenHelper extends SQLiteOpenHelper{
 	  private static final String LOG = "DbOpenHelper";
 	  private static final int DB_VERSION = 1;
-	  private static final String DB_NAME = "DB";
+	  private static final String DB_NAME = "database";
 	  
-	  public static final String KEY_ID = "_id"; 
+	  public static final String KEY_ID = "_id";
 	  public static final String TABLE_NAME = "tasks";
 	  public static final String TASK_NAME = "task_name";
-	  public static final String START_DATE = "start_date";
+	  public static final String CATEGORY = "category";
 	  public static final String END_DATE = "end_date";
+      public static final String STATUS = "status";
 	  
-	  private static final String CREATE_TABLE = "create table " + TABLE_NAME + " ( _id integer primary key autoincrement, "
-			  +										 TASK_NAME + " TEXT, " + START_DATE +  " TEXT, " + END_DATE + " TEXT)";
+	  private static final String CREATE_TABLE = "create table " +
+              TABLE_NAME + " ( " +
+              KEY_ID + " INTEGER primary key autoincrement, " +
+              TASK_NAME + " TEXT, " +
+              CATEGORY + " TEXT, " +
+              STATUS + " INTEGER, " +
+              END_DATE + " TEXT);";
+
 	  public DbOpenHelper(Context context) {
 		    super(context, DB_NAME, null,DB_VERSION);
 		  }

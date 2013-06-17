@@ -3,48 +3,60 @@ package com.malta.taskwidget;
 public class Task {
 	private long id;
 	private String name;
-	private String start_date;
+	private String category;
 	private String end_date;
-	
-	public long getID(){
-		return id;
-	}
-	
-	public void setID(long id){
-		this.id=id;
-	}
-	
-	public String getname(){
-		return name;
-	}
-	
-	public void setname(String name){
-		this.name=name;
-	}	
-	
-	
-	public String getStart(){
-		return start_date;
-	}
+    private int isDone;
 
-	public void setStart(String start_date){
-		this.start_date=start_date;
-	}	
-	
-	public String getEnd(){
-		return end_date;
-	}
-	
-	public void setEnd(String end_date){
-		this.end_date=end_date;
-	}
+    public int getDone() {
+        return isDone;
+    }
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return Long.toString(id)+".  "+name+"  |  "+start_date+"  |  "+end_date;
-	}	
-	
-	
-	
+    public void setDone(int done) {
+        isDone = done;
+    }
+
+    private Task(long _id, String _name, String _category, String _end_date) {
+        this.id=_id;
+        this.name=_name;
+        this.category=_category;
+        this.end_date=_end_date;
+    }
+
+    public static Task createTask(long _id, String _name, String _category, String _end_date) {
+        return new Task(_id, _name, _category, _end_date);
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
+    }
+
 }
