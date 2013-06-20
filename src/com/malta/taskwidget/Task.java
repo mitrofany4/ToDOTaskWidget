@@ -5,7 +5,7 @@ public class Task {
 	private String name;
 	private String category;
 	private String end_date;
-    private int isDone;
+    private int isDone = 1;
 
     public int getDone() {
         return isDone;

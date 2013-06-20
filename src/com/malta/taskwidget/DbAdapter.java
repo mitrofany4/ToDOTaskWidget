@@ -41,7 +41,7 @@ public class DbAdapter {
 		dbHelper.close();
 	}
 	
-	public long createTask(String task_name, String end_date, String category){
+	public long createTask(String task_name, String category, String end_date){
 		
 		ContentValues initialValues = createContentValues(task_name, end_date, category);
 		Log.d(LOG, "Task created");
@@ -55,6 +55,7 @@ public class DbAdapter {
 		values.put(DbOpenHelper.TASK_NAME, task_name);
 		values.put(DbOpenHelper.CATEGORY, category);
 		values.put(DbOpenHelper.END_DATE, end_date);
+        values.put(DbOpenHelper.STATUS, 0);
 		return values;
 	}
 	
@@ -62,7 +63,7 @@ public class DbAdapter {
 
         ArrayList <Task> tasks = new ArrayList<Task>();
 		Cursor cursor = db.query(DbOpenHelper.TABLE_NAME, new String[]
-				{DbOpenHelper.TASK_NAME, DbOpenHelper.END_DATE,DbOpenHelper.CATEGORY},
+				{DbOpenHelper.KEY_ID,DbOpenHelper.TASK_NAME, DbOpenHelper.END_DATE,DbOpenHelper.CATEGORY, DbOpenHelper.STATUS},
 				null, null, null, null, null);
 
         tasks.clear();
@@ -72,8 +73,9 @@ public class DbAdapter {
                String name = cursor.getString(cursor.getColumnIndex(DbOpenHelper.TASK_NAME));
                String category = cursor.getString(cursor.getColumnIndex(DbOpenHelper.CATEGORY));
                String enddate = cursor.getString(cursor.getColumnIndex(DbOpenHelper.END_DATE));
-
+               int status = cursor.getInt(cursor.getColumnIndex(DbOpenHelper.STATUS));
                Task newtask = Task.createTask(id,name, category, enddate);
+               newtask.setDone(status);
                tasks.add(newtask);
             } while (cursor.moveToNext());
         }
@@ -84,7 +86,8 @@ public class DbAdapter {
 
     public void updateStatus(long id){
         ContentValues values = new ContentValues();
-        values.put(DbOpenHelper.STATUS, 0);
+        values.put(DbOpenHelper.STATUS, 1);
+
         db.update(DbOpenHelper.TABLE_NAME, values, DbOpenHelper.KEY_ID+"="+id,null);
 
 

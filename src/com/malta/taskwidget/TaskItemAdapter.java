@@ -51,7 +51,7 @@ public class TaskItemAdapter extends ArrayAdapter <Task> {
         View rowView = convertView;
         item = getItem(position);
         pos = position;
-        dba=dba.OpentoWrite();
+
 
         if (rowView == null) {
             LayoutInflater inflater = context.getLayoutInflater();
@@ -60,8 +60,6 @@ public class TaskItemAdapter extends ArrayAdapter <Task> {
             holder.name = (TextView) rowView.findViewById(R.id.tasknameTV);
             holder.category = (TextView) rowView.findViewById(R.id.taskcatTV);
             holder.date = (TextView) rowView.findViewById(R.id.taskdateTV);
-            holder.name = (TextView) rowView.findViewById(R.id.tasknameTV);
-
             holder.done = (ImageView) rowView.findViewById(R.id.checkIV);
             holder.delete = (ImageView) rowView.findViewById(R.id.deleteIV);
 
@@ -75,10 +73,12 @@ public class TaskItemAdapter extends ArrayAdapter <Task> {
             @Override
             public void onClick(View view) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                if (item.getDone() == 1) {
-                    item.setDone(0);
+                if (item.getDone() == 0) {
+                    item.setDone(1);
                     holder.name.setPaintFlags(holder.name.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    dba=dba.OpentoWrite();
                     dba.updateStatus(item.getId());
+                    dba.Close();
                 }
                 notifyDataSetChanged();
             }
@@ -88,21 +88,33 @@ public class TaskItemAdapter extends ArrayAdapter <Task> {
             public void onClick(View view) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 items.remove(pos);
+                dba.OpentoWrite();
                 dba.removeTask(item.getId());
                 notifyDataSetChanged();
+                dba.Close();
             }
         });
-        if (item.getDone() == 0) {
+        if (item.getDone() == 1) {
            holder.name.setPaintFlags(holder.name.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        }
+           holder.done.setVisibility(View.INVISIBLE);
+        } else
+            holder.name.setPaintFlags(holder.name.getPaintFlags() | Paint.LINEAR_TEXT_FLAG);
+
+
         holder.name.setText(item.getName());
         holder.category.setText(item.getCategory());
-        holder.category.setBackgroundColor(Color.GREEN);
+        holder.category.setBackgroundColor(getCategoryColor(item.getCategory()));
         holder.date.setText(item.getEnd_date());
 
-        dba.Close();
-        return super.getView(position, convertView, parent);
+
+        return rowView;
     }
 
+    int getCategoryColor(String Cat){
+        if (Cat.equals("семья")) return Color.YELLOW;
+        else if (Cat.equals("работа")) return Color.RED;
+        else if (Cat.equals("покупки")) return Color.BLUE;
+        else return 0;
+    }
 
 }

@@ -15,9 +15,10 @@ import java.util.ArrayList;
  */
 public class TaskViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
-    private ArrayList <Task> items = new ArrayList<Task>();
+    private ArrayList <Task> items;
     private Context ctxt = null;
     private int appWidgetId;
+   DbAdapter dba;
 
     public TaskViewsFactory(Context ctxt, Intent intent) {
         this.ctxt = ctxt;
@@ -26,17 +27,22 @@ public class TaskViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     @Override
     public void onCreate() {
-
+        items = new ArrayList<Task>();
+        dba = new DbAdapter(ctxt);
     }
 
     @Override
     public void onDataSetChanged() {
 
+        items.clear();
+        dba.OpentoRead();
+       items = dba.getAllTasks();
+
     }
 
     @Override
     public void onDestroy() {
-
+        dba.Close();
     }
 
     @Override
@@ -52,7 +58,7 @@ public class TaskViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         row.setTextViewText(R.id.itemnameTV, items.get(position).getName());
         row.setTextViewText(R.id.itemcatTV, items.get(position).getCategory());
 
-        row.setInt(R.id.itemcatTV, "setBackgroundColor", Color.GREEN);
+        row.setInt(R.id.itemcatTV, "setBackgroundColor", getCategoryColor(items.get(position).getCategory()));
 
         row.setTextViewText(R.id.itemdateTV, items.get(position).getEnd_date());
 
@@ -90,4 +96,13 @@ public class TaskViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     public boolean hasStableIds() {
         return true;
     }
+
+
+    int getCategoryColor(String Cat){
+        if (Cat.equals("семья")) return Color.YELLOW;
+        else if (Cat.equals("работа")) return Color.RED;
+        else if (Cat.equals("покупки")) return Color.BLUE;
+        else return 0;
+    }
+
 }

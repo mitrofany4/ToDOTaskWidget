@@ -8,6 +8,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
@@ -103,9 +104,10 @@ public class TaskWidget extends AppWidgetProvider{
                         clickIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT);
 
-        widget.setPendingIntentTemplate(R.id.widgetLV, clickPI);
-
+//        widget.setPendingIntentTemplate(R.id.widgetLV, clickPI);
+        widget.setOnClickPendingIntent(R.id.button, clickPI);
         appWidgetManager.updateAppWidget(appWidgetIds[i], widget);
         }
 	}
+
 }

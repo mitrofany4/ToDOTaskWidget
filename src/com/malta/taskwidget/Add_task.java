@@ -38,7 +38,9 @@ public class Add_task extends Activity {
 	protected void addTask(){
 		DbAdapter dba = new DbAdapter(this);
 		dba=dba.OpentoWrite();
-        String dateF = enddatepicker.getDayOfMonth() + "."+ (enddatepicker.getMonth()+1)+enddatepicker.getYear();
+        java.util.Formatter dateF = new java.util.Formatter();
+        dateF.format("%02d.%02d.%d",enddatepicker.getDayOfMonth(), enddatepicker.getMonth()+1, enddatepicker.getYear());
+//        String dateF = enddatepicker.getDayOfMonth() + "."+ (enddatepicker.getMonth()+1)+"."+enddatepicker.getYear();
         java.util.Formatter timeF = new java.util.Formatter();
         timeF.format("%d:%02d", endtimepicker.getCurrentHour(), endtimepicker.getCurrentMinute());
         long n = dba.createTask(tasknameEditText.getText().toString(),
