@@ -5,12 +5,18 @@ import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RemoteViews;
+
+import java.util.ArrayList;
 
 public class UpdateWidgetService extends Service {
 	private static final String LOG = "Service";
+    private ArrayList<Task> mytasks = new ArrayList<Task>();
 
 	@Override
 	public void onCreate() {
@@ -36,6 +42,15 @@ public class UpdateWidgetService extends Service {
 		Log.w(LOG, "From Intent" + String.valueOf(allWidgetIds.length));
 		Log.w(LOG, "Direct" + String.valueOf(allWidgetIds2.length));
 
+        // DataBase Adapter
+        DbAdapter dba = new DbAdapter(this);
+        dba=dba.OpentoRead();
+
+        mytasks = dba.getAllTasks();
+
+        dba.Close();
+
+
         if (allWidgetIds.length > 0) {
 		for (int widgetId : allWidgetIds) {
 
@@ -43,9 +58,7 @@ public class UpdateWidgetService extends Service {
 					.getApplicationContext().getPackageName(),
 					R.layout.main);
 
-            remoteViews.setTextViewText(R.id.taskTV1,String.valueOf(TaskWidget.cur_item+1));
-
-            // Register an onClickListener
+              // Register an onClickListener
             Intent clickIntent = new Intent(this.getApplicationContext(),
                     Add_task.class);
 

@@ -3,7 +3,7 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="15" />
+    <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="15" />
 
     <application android:label="@string/app_name"
         android:icon="@drawable/ic_launcher"
@@ -11,14 +11,23 @@
         
 		<activity
 		    	  android:name=".Add_task" 
-		    	  android:label="@string/app_name"
+
 		    	  android:theme="@android:style/Theme.Dialog">
-		    <intent-filter>
-		        <action android:name="com.malta.taskwidget.MAIN"/>
-		        <category android:name="android.intent.category.DEFAULT"></category>
-		    </intent-filter>
-		</activity>  
-		<service android:name=".UpdateWidgetService"></service> 
+		</activity>
+
+        <activity android:name="com.malta.taskwidget.EditActivity"
+                  android:theme="@android:style/Theme.Light.NoTitleBar">
+            <intent-filter>
+                <action android:name="com.malta.taskwidget.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
+
+        </activity>
+
+
+
+        <service android:name="WidgetService"
+                 android:permission="android.permission.BIND_REMOTEVIEWS" />
 		<receiver android:name=".TaskWidget" android:label="@string/app_name">
 	 		 <intent-filter>
 	   			 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

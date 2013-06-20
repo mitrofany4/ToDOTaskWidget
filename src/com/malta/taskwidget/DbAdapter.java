@@ -49,8 +49,7 @@ public class DbAdapter {
 		
 	}
 
-	private ContentValues createContentValues(String task_name,
-			String end_date, String category) {
+	private ContentValues createContentValues(String task_name, String end_date, String category) {
 		// TODO Auto-generated method stub
 		ContentValues values = new ContentValues();
 		values.put(DbOpenHelper.TASK_NAME, task_name);
@@ -81,6 +80,18 @@ public class DbAdapter {
 
 		cursor.close();
         return  tasks;
+    }
+
+    public void updateStatus(long id){
+        ContentValues values = new ContentValues();
+        values.put(DbOpenHelper.STATUS, 0);
+        db.update(DbOpenHelper.TABLE_NAME, values, DbOpenHelper.KEY_ID+"="+id,null);
+
+
+    }
+
+    public void removeTask(long id){
+        db.delete(DbOpenHelper.TABLE_NAME, DbOpenHelper.KEY_ID+"="+id,null);
     }
 
 }

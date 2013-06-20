@@ -12,8 +12,6 @@ import android.widget.*;
 
 public class Add_task extends Activity {
     private EditText tasknameEditText;
-    private EditText startnameEditText;
-    private EditText endnameEditText;
 	private Button addbutton;
 	private Button cancelbutton;
     private DatePicker enddatepicker;
